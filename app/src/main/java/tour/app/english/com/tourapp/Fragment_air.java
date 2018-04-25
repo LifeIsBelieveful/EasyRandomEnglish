@@ -32,8 +32,8 @@ public class Fragment_air extends Fragment {
                 startActivity(intent1);
                 //버튼에 글자넣기
 
-                ((StartActivity)getActivity()).questionlayout.setVisibility(View.VISIBLE);
-                layout.setVisibility(View.GONE);
+                //((StartActivity)getActivity()).questionlayout.setVisibility(View.VISIBLE);
+                //layout.setVisibility(View.GONE);
             }
         });
 

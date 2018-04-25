@@ -2,6 +2,7 @@ package tour.app.english.com.tourapp;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
@@ -85,13 +86,13 @@ public class MainActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                         }
                     });
-                    dialog.show();
+                    //dialog.show();
 
                 }
             }
         };
 
-        Thread thread = new Thread(new Runnable() {
+        final Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (i = 0; i <= 20; i++) {
@@ -108,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         thread.start();
-        //
 
 
         //정답확인 하기
@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                thread.interrupt();
                 checklaout.setVisibility(View.VISIBLE);
                 if(input_text.equals(answer1)||input_text.equals(answer2)){
                     OxText.setText("정답입니다.");
@@ -124,7 +125,27 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        //다시하기
+        final Button retryButton =findViewById(R.id.quastion_retry_button);
+        retryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+        final Button anotherButton =findViewById(R.id.quastion_list_button);
+        anotherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+            }
+        });
+
     }
+
 
 
 
