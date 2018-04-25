@@ -41,7 +41,6 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         checklaout=findViewById(R.id.check_layout);
-        checklaout.setVisibility(View.GONE);
 
         OxText=findViewById(R.id.oxtext);
 
@@ -68,67 +67,5 @@ public class StartActivity extends AppCompatActivity {
 
             }
         });
-        //정답확인 하기
-        checkButton=findViewById(R.id.checkButton);
-        checkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checklaout.setVisibility(View.VISIBLE);
-                if(input_text.equals(answer1)||input_text.equals(answer2)){
-                    OxText.setText("정답입니다.");
-                }else {
-                    OxText.setText("틀렸습니다.");
-                }
-            }
-        });
-    }
-    //하단에 버튼 랜덤으로 뿌려주기
-    public void createbutton(){
-
-        QuestionData questionData = new QuestionData();
-
-        questionTest = questionData.putQuestion(Category,questionData.putQuestiondata("1",question));
-
-
-        List<String> savesplit;
-        LinearLayout linearLayout = findViewById(R.id.buttonlayout);
-
-        LinearLayout qbuttonlayout1 = findViewById(R.id.qbuttonLayout1);
-        LinearLayout qbuttonlayout2 = findViewById(R.id.qbuttonLayout2);
-
-        SplitSentence splitSentence = new SplitSentence();
-        String inputquestion = questionTest.get("Airport").get(0).get("1");
-        savesplit = splitSentence.splitString(inputquestion);
-
-        Collections.shuffle(savesplit);
-
-        for(int i=0;i<savesplit.size();i++){
-            final Button btn = new Button(this);
-            btn.setText(savesplit.get(i));
-
-            if(i<4){
-                qbuttonlayout1.addView(btn);
-            }
-            else{
-                qbuttonlayout2.addView(btn);
-            }
-
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (click == 0) {
-                        input_text += btn.getText();
-                        textview.setText(input_text);
-                        click++;
-
-                    } else {
-                        if (!textview.getText().toString().contains(btn.getText().toString())) {
-                            input_text += btn.getText();
-                            textview.setText(input_text);
-                        }
-                    }
-                }
-            });
-        }
     }
 }

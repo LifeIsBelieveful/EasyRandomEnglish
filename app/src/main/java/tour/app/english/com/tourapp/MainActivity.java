@@ -1,7 +1,11 @@
 package tour.app.english.com.tourapp;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -9,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
     Button airport,hotel,restaurant,checkButton;
     FragmentManager fm;
 
+    //프로그레스바 코드
+    ProgressBar progressBar;
+    int i;
+    Handler handler;
+    TextView txt;
+    AlertDialog.Builder dialog;
+    //
 
 
     @Override
@@ -53,6 +65,52 @@ public class MainActivity extends AppCompatActivity {
 
         createbutton();
 
+        //프로그레스바 코드
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        txt = (TextView) findViewById(R.id.txt);
+        dialog = new AlertDialog.Builder(this);
+
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                txt.setText(msg.arg1 + "초");
+                if (msg.arg1 == 20) {
+                    dialog.setCancelable(false);
+                    dialog.setMessage("Time Over!");
+                    dialog.setPositiveButton("열심히 공부합시다!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            progressBar.setProgress(0);
+                            txt.setText("다시 도전하세요!");
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    dialog.show();
+
+                }
+            }
+        };
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (i = 0; i <= 20; i++) {
+                    progressBar.setProgress(i);
+                    Message msg = handler.obtainMessage();
+                    msg.arg1 = i;
+                    handler.sendMessage(msg);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
+        //
+
+
         //정답확인 하기
         checkButton=findViewById(R.id.checkButton);
         checkButton.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
     //하단에 버튼 랜덤으로 뿌려주기
     public void createbutton(){
 
