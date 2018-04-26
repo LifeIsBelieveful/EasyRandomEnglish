@@ -12,14 +12,23 @@
 
         <Button
             android:layout_gravity="center"
-            android:text="1. 뉴욕행 비행기를 예약하고 싶어요. "
-            android:id="@+id/Q1"
+            android:text="1. 뉴욕행 비행기를 예약하고 싶어요"
+            android:id="@+id/airQ1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            />
         <Button
             android:layout_gravity="center"
-            android:text="2. 예약을 변경하고 싶어요. "
-            android:id="@+id/Q2"
+            android:text="2. 예약을 변경하고 싶어요."
+            android:id="@+id/airQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_gravity="center"
+            android:text="3. 도착시간은 언제입니까?"
+            android:id="@+id/airQ3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

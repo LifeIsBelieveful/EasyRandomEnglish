@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/startlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    //상단버튼
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/airport"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="공  항" />
+
+        <Button
+            android:id="@+id/hotel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="숙  소" />
+
+        <Button
+            android:id="@+id/restaurant"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="식  당" />
+    </LinearLayout>
+    //문제레이아웃
+
+    <LinearLayout
+        android:id="@+id/layout_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="vertical">
+        //문제들어가는 레이아웃
+
+        <LinearLayout
+            android:id="@+id/layout_infragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:orientation="vertical">
+
+            //이미지 들어가는 곳
+            //중간 카운터 및 텍스트
+            //버튼 뿌려지는 곳
+
+            <LinearLayout
+                android:id="@+id/buttonlayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/qbuttonLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/qbuttonLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+            </LinearLayout>
+            //정답확인
+            //정답확인 레이아웃
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -7,13 +7,12 @@ import java.util.Map;
 
 public class QuestionData {
 
-    Map<String,List<Map<String, String>>> question = new HashMap<String, List<Map<String,String>>>();
+    Map<String, List<Map<String, String>>> question = new HashMap<String, List<Map<String, String>>>();
 
     List<Map<String, String>> questionDataList = new ArrayList<>();
     Map<String, String> questionDataMap = new HashMap<>();
 
-
-    public List<Map<String, String>> putQuestiondata(String number, String questiondata ) {
+    public List<Map<String, String>> putQuestiondata(String number, String questiondata) {
         questionDataMap = new HashMap<>();
         questionDataMap.put(number, questiondata);
         questionDataList.add(questionDataMap);
@@ -21,12 +20,10 @@ public class QuestionData {
         return questionDataList;
     }
 
-    public Map<String, List<Map<String, String>>> putQuestion (String Category, List<Map<String, String>> questionData){
+    public Map<String, List<Map<String, String>>> putQuestion(String Category, List<Map<String, String>> questionData) {
         question = new HashMap<>();
         question.put(Category, questionDataList);
 
         return question;
     }
-
-
 }
